@@ -1,10 +1,10 @@
 import { useContext, useState } from 'react';
-import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { AuthContext } from '../../AuthProvider/AuthProvider';
 import '../../Styles/login.css';
+import { AuthContext } from '../../../AuthProvider/AuthProvider';
 
 const Login = () => {
   const { signInUser, googleSignIn, facebookSignIn } = useContext(AuthContext);
