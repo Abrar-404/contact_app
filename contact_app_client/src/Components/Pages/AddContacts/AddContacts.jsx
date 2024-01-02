@@ -1,15 +1,51 @@
+import Swal from 'sweetalert2';
+import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import '../../Styles/submitbtn.css';
 
 const AddContacts = () => {
+  const axiosSecure = useAxiosSecure();
+
+  const handleAddContact = e => {
+    e.preventDefault();
+
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const number = form.number.value;
+    const address = form.address.value;
+    const picture = form.picture.value;
+
+    const contactAdd = {
+      name,
+      email,
+      number,
+      address,
+      picture,
+    };
+    axiosSecure.post('/addContact', contactAdd).then(res => {
+      console.log(res.data);
+      if (res.data.insertedId) {
+        Swal.fire({
+          title: `Bingo!`,
+          text: ` ${name} added to the cart.`,
+          // imageUrl: `${img}`,
+          imageWidth: 400,
+          imageHeight: 200,
+          imageAlt: 'Custom image',
+        });
+      }
+    });
+  };
+
   return (
-    <div className="mt-32">
+    <div className="mt-32 mb-[-20]">
       <div className="text-center">
         <h1 className="text-3xl font-bold">Add Contacts</h1>
       </div>
       <div className="hero min-h-screen">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="card shrink-0 w-full mx-auto shadow-2xl bg-base-100">
-            <form className="card-body">
+            <form onSubmit={handleAddContact} className="card-body">
               <div className="flex flex-col md:flex-col lg:flex-row gap-5 mx-auto">
                 <div className="form-control">
                   <label className="label">
