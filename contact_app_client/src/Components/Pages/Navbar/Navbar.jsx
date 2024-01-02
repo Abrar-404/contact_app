@@ -3,6 +3,7 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 // import img from '../../assets/logo.svg';
 import '../../Styles/signout.css';
 import { AuthContext } from './../../../AuthProvider/AuthProvider';
+import '../../Styles/loginbtn.css';
 
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
@@ -55,7 +56,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="navbar bg-[#FF2C9C] shadow-xl">
+      <div className="navbar bg-[#000000] shadow-xl">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn text-white btn-ghost lg:hidden">
@@ -121,8 +122,16 @@ const Navbar = () => {
             </div>
           ) : (
             <Link to="/login">
-              <button className="btn btn-circle border-none text-xs text-white bg-[#000000]">
-                Login
+              <button className="bittu" type="button">
+                <strong>Login</strong>
+                <div id="container-stars">
+                  <div id="stars"></div>
+                </div>
+
+                <div id="glow">
+                  <div className="circle"></div>
+                  <div className="circle"></div>
+                </div>
               </button>
             </Link>
           )}

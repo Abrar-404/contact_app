@@ -5,8 +5,7 @@ import MainLayout from './Components/Layout/MainLayout';
 import Home from './Components/Home/Home';
 import AuthProvider from './AuthProvider/AuthProvider';
 import Login from './Components/Pages/Login/Login';
-import AllContacts from './Components/Pages/AllContacts/AllContacts';
-import AddContacts from './Components/Pages/AddContacts/AddContacts';
+import Register from './Components/Pages/Register/Register';
 
 const router = createBrowserRouter([
   {
@@ -22,16 +21,8 @@ const router = createBrowserRouter([
         element: <Login></Login>,
       },
       {
-        path: '/login',
-        element: <Login></Login>,
-      },
-      {
-        path: '/allContacts',
-        element: <AllContacts></AllContacts>,
-      },
-      {
-        path: '/addContacts',
-        element: <AddContacts></AddContacts>,
+        path: '/register',
+        element: <Register></Register>,
       },
     ],
   },
