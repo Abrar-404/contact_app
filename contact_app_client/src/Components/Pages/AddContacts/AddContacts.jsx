@@ -1,9 +1,13 @@
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import '../../Styles/submitbtn.css';
+import 'react-phone-number-input/style.css';
+import PhoneInput from 'react-phone-number-input';
+import { useState } from 'react';
 
 const AddContacts = () => {
   const axiosSecure = useAxiosSecure();
+  const [value, setValue] = useState();
 
   const handleAddContact = e => {
     e.preventDefault();
@@ -77,13 +81,25 @@ const AddContacts = () => {
                   <label className="label">
                     <span className="label-text font-bold">Phone Number</span>
                   </label>
-                  <input
+                  <PhoneInput
+                    international
+                    defaultCountry="BD"
+                    className="input input-bordered"
+                    value={value}
+                    name="number"
+                    onChange={setValue}
+                  />
+                  {/* <PhoneInput
+                    placeholder="Enter phone number"
+                    value={value}
+                    onChange={setValue}
+                    international
+                    defaultCountry="BD"
                     type="number"
-                    placeholder="Your Number"
                     className="input input-bordered"
                     required
                     name="number"
-                  />
+                  /> */}
                 </div>
                 <div className="form-control">
                   <label className="label">
