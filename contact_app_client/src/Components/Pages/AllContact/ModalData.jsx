@@ -3,6 +3,7 @@ import Modal from './Modal';
 import axios from 'axios';
 import '../../Styles/input.css';
 import '../../Styles/updatebtn.css';
+import '../../Styles/deletebtn.css';
 
 const ModalData = ({ isOpen, setIsOpen, contactId }) => {
   const [singleContact, setSingleContact] = useState(null);
@@ -92,7 +93,7 @@ const ModalData = ({ isOpen, setIsOpen, contactId }) => {
         <div className="flex justify-center gap-5 mx-auto items-center mt-10">
           <button className="bitti">Update</button>
 
-          <button className="bitti">Delete</button>
+          <button className="booto">Delete</button>
         </div>
       </Modal>
     </div>
