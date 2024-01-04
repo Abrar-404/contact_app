@@ -52,8 +52,26 @@ const ModalData = ({ isOpen, setIsOpen, contactId }) => {
         </div>
         <div>
           <div className="inp-container">
-            <h1 className="inp flex justify-center" name="text" type="text">
+            <h1
+              className="inp flex justify-center mt-10"
+              name="text"
+              type="text"
+            >
               {singleContact?.address}
+            </h1>
+            <label className="label" for="input">
+              Email
+            </label>
+            <div className="topline"></div>
+            <div className="underline"></div>
+          </div>
+          <div className="inp-container">
+            <h1
+              className="inp flex justify-center mt-10"
+              name="text"
+              type="text"
+            >
+              {singleContact?.number}
             </h1>
             <label className="label" for="input">
               Email
