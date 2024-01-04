@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Modal from './Modal';
 import axios from 'axios';
 import '../../Styles/input.css';
+import '../../Styles/updatebtn.css';
 
 const ModalData = ({ isOpen, setIsOpen, contactId }) => {
   const [singleContact, setSingleContact] = useState(null);
@@ -26,6 +27,13 @@ const ModalData = ({ isOpen, setIsOpen, contactId }) => {
   return (
     <div>
       <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
+        <div className="flex justify-center">
+          <img
+            src={singleContact?.picture}
+            className="rounded-full w-[80px] h-[80px]"
+            alt=""
+          />
+        </div>
         <div>
           <div className="flex justify-center gap-5 mt-5 items-center mx-auto">
             <div className="inp-container">
@@ -79,6 +87,12 @@ const ModalData = ({ isOpen, setIsOpen, contactId }) => {
             <div className="topline"></div>
             <div className="underline"></div>
           </div>
+        </div>
+
+        <div className="flex justify-center gap-5 mx-auto items-center mt-10">
+          <button className="bitti">Update</button>
+
+          <button className="bitti">Delete</button>
         </div>
       </Modal>
     </div>
