@@ -90,10 +90,66 @@ const ModalData = ({ isOpen, setIsOpen, contactId }) => {
           </div>
         </div>
 
-        <div className="flex justify-center gap-5 mx-auto items-center mt-10">
-          <button className="bitti">Update</button>
+        <div className="flex justify-center gap-2 mx-auto items-center mt-10">
+          <div className="dropdown dropdown-top w-full">
+            <button tabIndex={0} role="bitti" className="bitti m-1">
+              Update
+            </button>
 
-          <button className="booto">Delete</button>
+            <ul
+              tabIndex={0}
+              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-full"
+            >
+              <li>
+                <label htmlFor="input" className="font-bold">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  placeholder="Your Name Here"
+                  name="name"
+                  className="input input-bordered input-secondary w-full max-w-xs"
+                />
+              </li>
+              <li>
+                <label htmlFor="input" className="font-bold">
+                  Email
+                </label>
+                <input
+                  type="text"
+                  placeholder="Your Email Here"
+                  name="email"
+                  className="input input-bordered input-secondary w-full max-w-xs"
+                />
+              </li>
+              <li>
+                <label htmlFor="input" className="font-bold">
+                  Address
+                </label>
+                <input
+                  type="text"
+                  placeholder="Your Address Here"
+                  name="address"
+                  className="input input-bordered input-secondary w-full max-w-xs"
+                />
+              </li>
+              <li>
+                <label htmlFor="input" className="font-bold">
+                  Phone
+                </label>
+                <input
+                  type="text"
+                  placeholder="Your Phone Here"
+                  name="phone"
+                  className="input input-bordered input-secondary w-full max-w-xs"
+                />
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <button className="booto">Delete</button>
+          </div>
         </div>
       </Modal>
     </div>
