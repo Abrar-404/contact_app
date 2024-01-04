@@ -37,7 +37,7 @@ const Navbar = () => {
             <NavLink to="/allContacts">All Contacts</NavLink>
           </li>
           <li className="text-white">
-            <NavLink to="/addContacts">Add Contacts</NavLink>
+            <NavLink  to="/addContacts">Add Contacts</NavLink>
           </li>
         </>
       )}
@@ -59,10 +59,10 @@ const Navbar = () => {
       <div className="navbar sticky top-0 z-50 bg-[#000000] shadow-xl">
         <div className="navbar-start">
           <div className="dropdown">
-            <label tabIndex={0} className="btn text-white btn-ghost lg:hidden">
+            <label tabIndex={0} className="text-white btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
+                className="w-5 h-5"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -84,8 +84,8 @@ const Navbar = () => {
           </div>
           <img className="max-w-[150px] max-h-[80px]" src="" alt="" />
         </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{navs}</ul>
+        <div className="hidden navbar-center lg:flex">
+          <ul className="px-1 menu menu-horizontal">{navs}</ul>
         </div>
         <div className="navbar-end">
           {user?.email ? (
@@ -104,13 +104,13 @@ const Navbar = () => {
                 className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
               >
                 <li>
-                  <button className="btn text-base mb-2 btn-sm btn-ghost">
+                  <button className="mb-2 text-base btn btn-sm btn-ghost">
                     {user.displayName}
                   </button>
                 </li>
                 <li>
                   <button
-                    className="Btn flex justify-center mx-auto"
+                    className="flex justify-center mx-auto Btn"
                     onClick={handleSignOut}
                   >
                     <div className="sign">

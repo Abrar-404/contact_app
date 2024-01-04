@@ -1,8 +1,16 @@
 import { useEffect, useState } from 'react';
 import AllContactCard from './AllContactCard';
+import ModalData from './ModalData';
 
 const AllContactFuntion = () => {
-  const [getContacts, setGetContacts] = useState();
+  const [getContacts, setGetContacts] = useState([]);
+  const [contactId, setContactId] = useState();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handelModal = id => {
+    setIsOpen(!isOpen);
+    setContactId(id);
+  };
 
   useEffect(() => {
     fetch('http://localhost:5000/addContact')
@@ -12,11 +20,14 @@ const AllContactFuntion = () => {
 
   return (
     <div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 mx-auto gap-5">
+      <ModalData isOpen={isOpen} setIsOpen={setIsOpen} contactId={contactId} />
+
+      <div className="grid grid-cols-1 gap-5 mx-auto md:grid-cols-2 lg:grid-cols-2">
         {getContacts?.map(contacts => (
           <AllContactCard
             key={contacts._id}
             contacts={contacts}
+            handelModal={handelModal}
           ></AllContactCard>
         ))}
       </div>
