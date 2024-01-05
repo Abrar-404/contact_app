@@ -4,7 +4,9 @@ import axios from 'axios';
 import '../../Styles/input.css';
 import '../../Styles/updatebtn.css';
 import '../../Styles/deletebtn.css';
+import Swal from 'sweetalert2';
 
+// eslint-disable-next-line react/prop-types
 const ModalData = ({ isOpen, setIsOpen, contactId }) => {
   const [singleContact, setSingleContact] = useState(null);
 
@@ -25,6 +27,79 @@ const ModalData = ({ isOpen, setIsOpen, contactId }) => {
   }, [contactId]);
   console.log(contactId);
 
+  // update function
+
+  //   const handleUpdate = e => {
+  //   e.preventDefault();
+
+  //   const allData = {
+  //     name: singleContact?.name,
+  //     email: singleContact?.email,
+  //     number: singleContact?.number,
+  //     address: singleContact?.address,
+  //   };
+
+  //   console.log('Request Payload:', allData);
+
+  //   fetch(`http://localhost:5000/addContact/${contactId}`, {
+  //     method: 'PATCH',
+  //     headers: {
+  //       'content-type': 'application/json',
+  //     },
+  //     body: JSON.stringify(allData),
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       console.log(data);
+  //       if (data.modifiedCount > 0) {
+  //         Swal.fire({
+  //           position: 'center',
+  //           icon: 'success',
+  //           title: 'Product Updated Successfully',
+  //           showConfirmButton: false,
+  //           timer: 1500,
+  //         });
+  //       }
+  //     })
+  //     .catch(error => {
+  //       console.error('Error updating contact:', error);
+  //     });
+  // };
+
+  const handleUpdate = e => {
+    e.preventDefault();
+    const form = e.target;
+
+    const name = form.name.value;
+    const Email = form.Email.value;
+    const number = form.number.value;
+    const address = form.address.value;
+
+    console.log(name, Email, number, address);
+
+    const allData = {
+      name,
+      Email,
+      number,
+      address,
+    };
+
+    console.log('Request Payload:', allData);
+
+    axios
+      .patch(`http://localhost:5000/addContact/${contactId}`, allData)
+      .then(res => {
+        console.log(res.data);
+        if (res.data.modifiedCount > 0) {
+          Swal.fire({
+            title: 'Success!',
+            // text: `${user?.name} is an admin now`,
+            icon: 'success',
+          });
+        }
+      });
+  };
+
   return (
     <div>
       <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
@@ -41,7 +116,7 @@ const ModalData = ({ isOpen, setIsOpen, contactId }) => {
               <h1 className="inp" name="text" type="text">
                 {singleContact?.name}
               </h1>
-              <label className="label" for="input">
+              <label className="label" htmlFor="input">
                 Name
               </label>
               <div className="topline"></div>
@@ -51,7 +126,7 @@ const ModalData = ({ isOpen, setIsOpen, contactId }) => {
               <h1 className="inp" name="text" type="text">
                 {singleContact?.email}
               </h1>
-              <label className="label" for="input">
+              <label className="label" htmlFor="input">
                 Email
               </label>
               <div className="topline"></div>
@@ -68,7 +143,7 @@ const ModalData = ({ isOpen, setIsOpen, contactId }) => {
             >
               {singleContact?.address}
             </h1>
-            <label className="label" for="input">
+            <label className="label" htmlFor="input">
               Email
             </label>
             <div className="topline"></div>
@@ -82,7 +157,7 @@ const ModalData = ({ isOpen, setIsOpen, contactId }) => {
             >
               {singleContact?.number}
             </h1>
-            <label className="label" for="input">
+            <label className="label" htmlFor="input">
               Email
             </label>
             <div className="topline"></div>
@@ -93,58 +168,62 @@ const ModalData = ({ isOpen, setIsOpen, contactId }) => {
         <div className="flex justify-center gap-2 mx-auto items-center mt-10">
           <div className="dropdown dropdown-top w-full">
             <button tabIndex={0} role="bitti" className="bitti m-1">
-              Update
+              Edit
             </button>
 
-            <ul
-              tabIndex={0}
-              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-full"
-            >
-              <li>
-                <label htmlFor="input" className="font-bold">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  placeholder="Your Name Here"
-                  name="name"
-                  className="input input-bordered input-secondary w-full max-w-xs"
-                />
-              </li>
-              <li>
-                <label htmlFor="input" className="font-bold">
-                  Email
-                </label>
-                <input
-                  type="text"
-                  placeholder="Your Email Here"
-                  name="email"
-                  className="input input-bordered input-secondary w-full max-w-xs"
-                />
-              </li>
-              <li>
-                <label htmlFor="input" className="font-bold">
-                  Address
-                </label>
-                <input
-                  type="text"
-                  placeholder="Your Address Here"
-                  name="address"
-                  className="input input-bordered input-secondary w-full max-w-xs"
-                />
-              </li>
-              <li>
-                <label htmlFor="input" className="font-bold">
-                  Phone
-                </label>
-                <input
-                  type="text"
-                  placeholder="Your Phone Here"
-                  name="phone"
-                  className="input input-bordered input-secondary w-full max-w-xs"
-                />
-              </li>
-            </ul>
+            <form onSubmit={handleUpdate}>
+              <ul
+                tabIndex={0}
+                className="dropdown-content mx-auto z-[1] menu p-2 shadow bg-base-100 rounded-box w-full"
+              >
+                <li>
+                  <label htmlFor="input" className="font-bold">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Your Name Here"
+                    name="name"
+                    className="input input-bordered input-secondary w-full max-w-xs"
+                  />
+                </li>
+                <li>
+                  <label htmlFor="input" className="font-bold">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    placeholder="Your Email Here"
+                    name="Email"
+                    className="input input-bordered input-secondary w-full max-w-xs"
+                  />
+                </li>
+                <li>
+                  <label htmlFor="input" className="font-bold">
+                    Address
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Your Address Here"
+                    name="address"
+                    className="input input-bordered input-secondary w-full max-w-xs"
+                  />
+                </li>
+                <li>
+                  <label htmlFor="input" className="font-bold">
+                    Phone
+                  </label>
+                  <input
+                    type="number"
+                    placeholder="Your Phone Here"
+                    name="number"
+                    className="input input-bordered input-secondary w-full max-w-xs"
+                  />
+                </li>
+
+                <button className="bitti mt-5">Update</button>
+              </ul>
+            </form>
           </div>
 
           <div>
