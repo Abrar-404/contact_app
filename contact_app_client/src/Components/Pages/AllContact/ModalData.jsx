@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 // eslint-disable-next-line react/prop-types
 const ModalData = ({ isOpen, setIsOpen, contactId }) => {
   const [singleContact, setSingleContact] = useState(null);
+  const [, forceUpdate] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,45 +30,43 @@ const ModalData = ({ isOpen, setIsOpen, contactId }) => {
 
   // update function
 
-  //   const handleUpdate = e => {
+  // const handleUpdate = e => {
   //   e.preventDefault();
+  //   const form = e.target;
+
+  //   const name = form.name.value;
+  //   const email = form.email.value;
+  //   const number = form.number.value;
+  //   const address = form.address.value;
+
+  //   console.log(name, email, number, address);
 
   //   const allData = {
-  //     name: singleContact?.name,
-  //     email: singleContact?.email,
-  //     number: singleContact?.number,
-  //     address: singleContact?.address,
+  //     name,
+  //     email,
+  //     number,
+  //     address,
   //   };
 
   //   console.log('Request Payload:', allData);
 
-  //   fetch(`http://localhost:5000/addContact/${contactId}`, {
-  //     method: 'PATCH',
-  //     headers: {
-  //       'content-type': 'application/json',
-  //     },
-  //     body: JSON.stringify(allData),
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       console.log(data);
-  //       if (data.modifiedCount > 0) {
+  //   axios
+  //     .patch(`http://localhost:5000/addContact/${contactId}`, allData)
+  //     .then(res => {
+  //       console.log(res.data);
+  //       if (res.data.modifiedCount > 0) {
   //         Swal.fire({
-  //           position: 'center',
+  //           title: 'Success!',
+  //           // text: `${user?.name} is an admin now`,
   //           icon: 'success',
-  //           title: 'Product Updated Successfully',
-  //           showConfirmButton: false,
-  //           timer: 1500,
   //         });
   //       }
-  //     })
-  //     .catch(error => {
-  //       console.error('Error updating contact:', error);
   //     });
   // };
 
-  const handleUpdate = e => {
+  const handleUpdate = async e => {
     e.preventDefault();
+    console.log('Handle Update function called');
     const form = e.target;
 
     const name = form.name.value;
@@ -86,23 +85,36 @@ const ModalData = ({ isOpen, setIsOpen, contactId }) => {
 
     console.log('Request Payload:', allData);
 
-    axios
-      .patch(`http://localhost:5000/addContact/${contactId}`, allData)
-      .then(res => {
-        console.log(res.data);
-        if (res.data.modifiedCount > 0) {
-          Swal.fire({
-            title: 'Success!',
-            // text: `${user?.name} is an admin now`,
-            icon: 'success',
-          });
-        }
-      });
+    try {
+      const response = await axios.patch(
+        `http://localhost:5000/addContact/${contactId}`,
+        allData
+      );
+
+      if (response.data.modifiedCount > 0) {
+        setSingleContact(prevContact => ({
+          ...prevContact,
+          ...allData,
+        }));
+        Swal.fire({
+          title: 'Success!',
+          icon: 'success',
+        });
+        forceUpdate({});
+      }
+    } catch (error) {
+      console.error('Error updating data:', error);
+    }
   };
 
   return (
     <div>
-      <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
+      <Modal
+        key={contactId}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        contactId={contactId}
+      >
         <div className="flex justify-center">
           <img
             src={singleContact?.picture}
@@ -113,7 +125,7 @@ const ModalData = ({ isOpen, setIsOpen, contactId }) => {
         <div>
           <div className="flex justify-center gap-5 mt-5 items-center mx-auto">
             <div className="inp-container">
-              <h1 className="inp" name="text" type="text">
+              <h1 className="inp" name="name" type="text">
                 {singleContact?.name}
               </h1>
               <label className="label" htmlFor="input">
@@ -123,7 +135,7 @@ const ModalData = ({ isOpen, setIsOpen, contactId }) => {
               <div className="underline"></div>
             </div>
             <div className="inp-container">
-              <h1 className="inp" name="text" type="text">
+              <h1 className="inp" name="email" type="text">
                 {singleContact?.email}
               </h1>
               <label className="label" htmlFor="input">
@@ -138,13 +150,13 @@ const ModalData = ({ isOpen, setIsOpen, contactId }) => {
           <div className="inp-container">
             <h1
               className="inp flex justify-center mt-10"
-              name="text"
+              name="address"
               type="text"
             >
               {singleContact?.address}
             </h1>
             <label className="label" htmlFor="input">
-              Email
+              Address
             </label>
             <div className="topline"></div>
             <div className="underline"></div>
@@ -152,13 +164,13 @@ const ModalData = ({ isOpen, setIsOpen, contactId }) => {
           <div className="inp-container">
             <h1
               className="inp flex justify-center mt-10"
-              name="text"
+              name="number"
               type="text"
             >
               {singleContact?.number}
             </h1>
             <label className="label" htmlFor="input">
-              Email
+              Number
             </label>
             <div className="topline"></div>
             <div className="underline"></div>
@@ -220,8 +232,7 @@ const ModalData = ({ isOpen, setIsOpen, contactId }) => {
                     className="input input-bordered input-secondary w-full max-w-xs"
                   />
                 </li>
-
-                <button className="bitti mt-5">Update</button>
+                <button className="bitti mt-2">Update</button>
               </ul>
             </form>
           </div>
