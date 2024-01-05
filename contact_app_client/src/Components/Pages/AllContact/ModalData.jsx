@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 // eslint-disable-next-line react/prop-types
 const ModalData = ({ isOpen, setIsOpen, contactId, setContacts }) => {
   const [singleContact, setSingleContact] = useState(null);
-  const [contacts, setUpdateContacts] = useState();
+  // const [contacts, setUpdateContacts] = useState();
   const [, forceUpdate] = useState();
 
   useEffect(() => {
@@ -90,8 +90,6 @@ const ModalData = ({ isOpen, setIsOpen, contactId, setContacts }) => {
       confirmButtonText: 'Yes, delete it!',
     }).then(result => {
       if (result.isConfirmed) {
-        // Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
-
         console.log('Deleted Successfully');
 
         fetch(`http://localhost:5000/addContact/${contactId}`, {
