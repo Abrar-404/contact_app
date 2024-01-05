@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 // eslint-disable-next-line react/prop-types
 const ModalData = ({ isOpen, setIsOpen, contactId, setContacts }) => {
   const [singleContact, setSingleContact] = useState(null);
+  const [contacts, setUpdateContacts] = useState();
   const [, forceUpdate] = useState();
 
   useEffect(() => {
@@ -26,47 +27,11 @@ const ModalData = ({ isOpen, setIsOpen, contactId, setContacts }) => {
       fetchData();
     }
   }, [contactId]);
-  console.log(contactId);
 
   // update function
 
-  // const handleUpdate = e => {
-  //   e.preventDefault();
-  //   const form = e.target;
-
-  //   const name = form.name.value;
-  //   const email = form.email.value;
-  //   const number = form.number.value;
-  //   const address = form.address.value;
-
-  //   console.log(name, email, number, address);
-
-  //   const allData = {
-  //     name,
-  //     email,
-  //     number,
-  //     address,
-  //   };
-
-  //   console.log('Request Payload:', allData);
-
-  //   axios
-  //     .patch(`http://localhost:5000/addContact/${contactId}`, allData)
-  //     .then(res => {
-  //       console.log(res.data);
-  //       if (res.data.modifiedCount > 0) {
-  //         Swal.fire({
-  //           title: 'Success!',
-  //           // text: `${user?.name} is an admin now`,
-  //           icon: 'success',
-  //         });
-  //       }
-  //     });
-  // };
-
   const handleUpdate = async e => {
     e.preventDefault();
-    console.log('Handle Update function called');
     const form = e.target;
 
     const name = form.name.value;
@@ -110,6 +75,43 @@ const ModalData = ({ isOpen, setIsOpen, contactId, setContacts }) => {
     } catch (error) {
       console.error('Error updating data:', error);
     }
+  };
+
+  // Delete function
+
+  const handleDelete = contactId => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then(result => {
+      if (result.isConfirmed) {
+        // Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+
+        console.log('Deleted Successfully');
+
+        fetch(`http://localhost:5000/addContact/${contactId}`, {
+          method: 'DELETE',
+        })
+          .then(res => res.json())
+          .then(data => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+
+              // eslint-disable-next-line react/prop-types
+              setContacts(prevContacts =>
+                prevContacts.filter(contact => contact._id !== contactId)
+              );
+              setIsOpen(false);
+            }
+          });
+      }
+    });
   };
 
   return (
@@ -243,7 +245,9 @@ const ModalData = ({ isOpen, setIsOpen, contactId, setContacts }) => {
           </div>
 
           <div>
-            <button className="booto">Delete</button>
+            <button onClick={() => handleDelete(contactId)} className="booto">
+              Delete
+            </button>
           </div>
         </div>
       </Modal>
