@@ -20,7 +20,12 @@ const AllContactFuntion = () => {
 
   return (
     <div>
-      <ModalData isOpen={isOpen} setIsOpen={setIsOpen} contactId={contactId} />
+      <ModalData
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        contactId={contactId}
+        setContacts={setGetContacts}
+      />
 
       <div className="grid grid-cols-1 gap-5 mx-auto md:grid-cols-2 lg:grid-cols-2">
         {getContacts?.map(contacts => (

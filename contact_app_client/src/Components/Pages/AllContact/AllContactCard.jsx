@@ -2,6 +2,7 @@ import '../../Styles/menubtn.css';
 
 // eslint-disable-next-line react/prop-types
 const AllContactCard = ({ contacts, handelModal }) => {
+
   const { name, email, picture, number, address } = contacts || {};
 
   return (

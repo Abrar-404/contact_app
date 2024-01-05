@@ -7,7 +7,7 @@ import '../../Styles/deletebtn.css';
 import Swal from 'sweetalert2';
 
 // eslint-disable-next-line react/prop-types
-const ModalData = ({ isOpen, setIsOpen, contactId }) => {
+const ModalData = ({ isOpen, setIsOpen, contactId, setContacts }) => {
   const [singleContact, setSingleContact] = useState(null);
   const [, forceUpdate] = useState();
 
@@ -92,6 +92,11 @@ const ModalData = ({ isOpen, setIsOpen, contactId }) => {
       );
 
       if (response.data.modifiedCount > 0) {
+        setContacts(prevContacts =>
+          prevContacts.map(contact =>
+            contact._id === contactId ? { ...contact, ...allData } : contact
+          )
+        );
         setSingleContact(prevContact => ({
           ...prevContact,
           ...allData,
