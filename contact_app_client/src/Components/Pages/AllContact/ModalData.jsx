@@ -71,15 +71,15 @@ const ModalData = ({ isOpen, setIsOpen, contactId }) => {
     const form = e.target;
 
     const name = form.name.value;
-    const Email = form.Email.value;
+    const email = form.email.value;
     const number = form.number.value;
     const address = form.address.value;
 
-    console.log(name, Email, number, address);
+    console.log(name, email, number, address);
 
     const allData = {
       name,
-      Email,
+      email,
       number,
       address,
     };
@@ -194,7 +194,7 @@ const ModalData = ({ isOpen, setIsOpen, contactId }) => {
                   <input
                     type="email"
                     placeholder="Your Email Here"
-                    name="Email"
+                    name="email"
                     className="input input-bordered input-secondary w-full max-w-xs"
                   />
                 </li>
@@ -214,7 +214,7 @@ const ModalData = ({ isOpen, setIsOpen, contactId }) => {
                     Phone
                   </label>
                   <input
-                    type="number"
+                    type="text"
                     placeholder="Your Phone Here"
                     name="number"
                     className="input input-bordered input-secondary w-full max-w-xs"
