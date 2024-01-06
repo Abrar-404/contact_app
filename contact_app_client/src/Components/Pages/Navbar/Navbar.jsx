@@ -37,7 +37,10 @@ const Navbar = () => {
             <NavLink to="/allContacts">All Contacts</NavLink>
           </li>
           <li className="text-white">
-            <NavLink  to="/addContacts">Add Contacts</NavLink>
+            <NavLink to="/addContacts">Add Contacts</NavLink>
+          </li>
+          <li className="text-white">
+            <NavLink to="/favorites">Favorite Contacts</NavLink>
           </li>
         </>
       )}
@@ -48,6 +51,9 @@ const Navbar = () => {
           </li>
           <li className="text-white">
             <NavLink to="/tasks">Add Contacts</NavLink>
+          </li>
+          <li className="text-white">
+            <NavLink to="/favorites">Favorite Contacts</NavLink>
           </li>
         </>
       )}

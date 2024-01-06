@@ -6,6 +6,7 @@ import Home from './Components/Home/Home';
 import AuthProvider from './AuthProvider/AuthProvider';
 import Login from './Components/Pages/Login/Login';
 import Register from './Components/Pages/Register/Register';
+import Favorites from './Components/Pages/Favorites/Favorites';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register></Register>,
+      },
+      {
+        path: '/favorites',
+        element: <Favorites></Favorites>,
       },
     ],
   },
