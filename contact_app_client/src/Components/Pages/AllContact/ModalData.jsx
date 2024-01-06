@@ -39,7 +39,6 @@ const ModalData = ({ isOpen, setIsOpen, contactId, setContacts }) => {
     const number = form.number.value;
     const address = form.address.value;
 
-    console.log(name, email, number, address);
 
     const allData = {
       name,
@@ -48,7 +47,6 @@ const ModalData = ({ isOpen, setIsOpen, contactId, setContacts }) => {
       address,
     };
 
-    console.log('Request Payload:', allData);
 
     try {
       const response = await axios.patch(
