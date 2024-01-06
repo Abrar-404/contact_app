@@ -1,9 +1,28 @@
 import '../../Styles/menubtn.css';
 import '../../Styles/favoritebtn.css';
+import { useEffect, useState } from 'react';
 
 // eslint-disable-next-line react/prop-types
 const AllContactCard = ({ contacts, handelModal }) => {
-  const { name, email, picture, number, address } = contacts || {};
+  const { name, email, picture, number, address, _id } = contacts || {};
+  const [isFavorite, setIsFavorite] = useState(false);
+  useEffect(() => {
+    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    setIsFavorite(favorites.includes(_id));
+  }, [_id]);
+
+  const toggleFavorite = () => {
+    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+    if (isFavorite) {
+      favorites = favorites.filter(favId => favId !== _id);
+    } else {
+      favorites.push(_id);
+    }
+
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+    setIsFavorite(!isFavorite);
+  };
 
   return (
     <div className="flex items-center justify-between w-full gap-5">
@@ -46,7 +65,7 @@ const AllContactCard = ({ contacts, handelModal }) => {
 
             {/* Favorite button */}
 
-            <div className="heart-container" title="Like">
+            {/* <div className="heart-container" title="Like">
               <input
                 type="checkbox"
                 className="checkbox inpuu"
@@ -81,7 +100,34 @@ const AllContactCard = ({ contacts, handelModal }) => {
                   <polygon points="80,80 70,70"></polygon>
                 </svg>
               </div>
-            </div>
+            </div> */}
+
+            <button onClick={toggleFavorite} className="">
+              <div className="tooltip-container">
+                <span
+                  //       className={`  isFavorite ? "bg-yellow-400" : "bg-sky-500"
+                  //    tooltip w-48 py-3 md:py-3 ml-2   text-xl border-2 border-white bg-sky-500`}
+                  className={`${
+                    isFavorite ? 'bg-red-600' : 'bg-sky-600'
+                  }  tooltip w-48 py-3 md:py-3 ml-2   text-xl border-2 border-white rounded-full p-2`}
+                >
+                  <p className="text-base">
+                    {isFavorite ? 'Remove ' : 'Add to Favorites'}
+                  </p>
+                </span>
+                <span className="text">
+                  <div className="">
+                    <div
+                      className={`${
+                        isFavorite ? 'bg-red-600' : 'bg-sky-600'
+                      } icon border-2 border-white `}
+                    >
+                      <button className="buutn">Add To Favorite</button>
+                    </div>
+                  </div>
+                </span>
+              </div>
+            </button>
 
             {/* Favorite button */}
           </div>
