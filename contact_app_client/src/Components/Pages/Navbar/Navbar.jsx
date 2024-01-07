@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-// import img from '../../assets/logo.svg';
+import logo from '../../../../public/Logo.png';
 import '../../Styles/signout.css';
 import { AuthContext } from './../../../AuthProvider/AuthProvider';
 import '../../Styles/loginbtn.css';
@@ -62,7 +62,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="navbar sticky top-0 z-50 bg-[#000000] shadow-xl">
+      <div className="navbar sticky top-0 z-50 shadow-xl">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="text-white btn btn-ghost lg:hidden">
@@ -88,7 +88,7 @@ const Navbar = () => {
               {navs}
             </ul>
           </div>
-          <img className="max-w-[150px] max-h-[80px]" src="" alt="" />
+          <img className="max-w-[150px] max-h-[80px]" src={logo} alt="" />
         </div>
         <div className="hidden navbar-center lg:flex">
           <ul className="px-1 menu menu-horizontal">{navs}</ul>
