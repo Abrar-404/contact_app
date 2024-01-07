@@ -91,6 +91,7 @@ const AllContactCard = ({ contacts, handelModal }) => {
           </div>
         </div>
       </div>
+
     </>
   );
 };

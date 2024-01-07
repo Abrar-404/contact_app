@@ -1,5 +1,6 @@
 import AOS from 'aos';
-import 'aos/dist/aos.css'; // You can also use <link> for styles
+import 'aos/dist/aos.css'; 
+import Framer from './Framer';
 // ..
 const Banner = () => {
   return (
@@ -21,6 +22,8 @@ const Banner = () => {
           />
         </div>
       </div>
+
+      <Framer></Framer>
     </div>
   );
 };
