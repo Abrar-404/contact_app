@@ -6,6 +6,7 @@ const MainLayout = () => {
   const background = {
     backgroundImage: `url(${backImg})`,
     backgroundSize: 'cover',
+    background: blur,
     backgroundRepeat: 'no-repeat',
     backgroundAttachment: 'fixed',
   };
