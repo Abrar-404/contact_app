@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import FavoriteCards from './FavoriteCards';
 import ModalData from './../AllContact/ModalData';
+import Transition from '../../Transition/Transition';
 
+// eslint-disable-next-line react-refresh/only-export-components
 const Favorites = () => {
   const [favoriteContacts, setFavoriteContacts] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
@@ -16,11 +18,7 @@ const Favorites = () => {
     <div className="max-w-[1400px] mx-auto">
       <h1 className="heading my-4">Favorite Contacts</h1>
 
-      <ModalData
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
-        contactId={contactId}
-      />
+      <ModalData isOpen={isOpen} setIsOpen={setIsOpen} contactId={contactId} />
       <div className="grid md:grid-cols-3 gap-4">
         {favoriteContacts.map(item => (
           <FavoriteCards key={item?._id} item={item} />
@@ -30,4 +28,5 @@ const Favorites = () => {
   );
 };
 
-export default Favorites;
+// eslint-disable-next-line react-refresh/only-export-components
+export default Transition(Favorites);

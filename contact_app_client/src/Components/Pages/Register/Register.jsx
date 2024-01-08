@@ -7,7 +7,9 @@ import { GiEnergyArrow } from 'react-icons/gi';
 import Swal from 'sweetalert2';
 import '../../Styles/login.css';
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
+import Transition from '../../Transition/Transition';
 
+// eslint-disable-next-line react-refresh/only-export-components
 const Register = () => {
   const { registerUser, googleSignIn, facebookSignIn } =
     useContext(AuthContext);
@@ -281,4 +283,5 @@ const Register = () => {
   );
 };
 
-export default Register;
+// eslint-disable-next-line react-refresh/only-export-components
+export default Transition(Register);

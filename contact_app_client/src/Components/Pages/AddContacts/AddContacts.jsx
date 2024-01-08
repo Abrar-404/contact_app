@@ -6,7 +6,9 @@ import PhoneInput from 'react-phone-number-input';
 import * as React from 'react';
 import { motion, useViewportScroll, useTransform } from 'framer-motion';
 import { useState } from 'react';
+import Transition from '../../Transition/Transition';
 
+// eslint-disable-next-line react-refresh/only-export-components
 const AddContacts = () => {
   const axiosSecure = useAxiosSecure();
   const [value, setValue] = useState();
@@ -161,4 +163,5 @@ const AddContacts = () => {
   );
 };
 
-export default AddContacts;
+// eslint-disable-next-line react-refresh/only-export-components
+export default Transition(AddContacts);

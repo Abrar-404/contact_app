@@ -29,9 +29,7 @@ const AllContactCard = ({ contacts, handelModal }) => {
 
   return (
     <>
-      <div className="wrapper">
-        
-
+      <div>
           <div className="cardush">
             <img src={picture} alt="" />
             <div className="cardush__content">

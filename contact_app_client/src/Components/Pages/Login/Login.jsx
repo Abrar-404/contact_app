@@ -5,7 +5,9 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../../Styles/login.css';
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
+import Transition from '../../Transition/Transition';
 
+// eslint-disable-next-line react-refresh/only-export-components
 const Login = () => {
   const { signInUser, googleSignIn, facebookSignIn } = useContext(AuthContext);
   const [error, setError] = useState(null);
@@ -222,4 +224,5 @@ const Login = () => {
   );
 };
 
-export default Login;
+// eslint-disable-next-line react-refresh/only-export-components
+export default Transition(Login);
