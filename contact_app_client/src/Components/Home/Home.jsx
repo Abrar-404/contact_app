@@ -7,8 +7,18 @@ const Home = () => {
   return (
     <div>
       <Banner></Banner>
-      <AddContacts></AddContacts>
-      <AllContactFuntion></AllContactFuntion>
+      <div>
+        <h1 className="text-white font-bold mt-32 flex justify-center text-3xl">
+          Add Contacts
+        </h1>
+        <AddContacts></AddContacts>
+      </div>
+      <div>
+        <h1 className="text-white font-bold mt-32 flex justify-center text-3xl">
+          All Contacts
+        </h1>
+        <AllContactFuntion></AllContactFuntion>
+      </div>
     </div>
   );
 };

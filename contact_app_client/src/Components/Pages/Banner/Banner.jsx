@@ -1,5 +1,5 @@
 import AOS from 'aos';
-import 'aos/dist/aos.css'; 
+import 'aos/dist/aos.css';
 import Framer from './Framer';
 // ..
 const Banner = () => {
@@ -23,7 +23,9 @@ const Banner = () => {
         </div>
       </div>
 
-      <Framer></Framer>
+      <div className="mt-32">
+        <Framer></Framer>
+      </div>
     </div>
   );
 };

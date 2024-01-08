@@ -27,7 +27,7 @@ const AllContactFuntion = () => {
         setContacts={setGetContacts}
       />
 
-      <div className="grid grid-cols-1 gap-5 mx-auto md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-5 mx-auto md:grid-cols-2 lg:grid-cols-4 mt-32">
         {getContacts?.map(contacts => (
           <AllContactCard
             key={contacts._id}

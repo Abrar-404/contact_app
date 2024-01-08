@@ -2,11 +2,12 @@ import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import '../../Styles/submitbtn.css';
 import 'react-phone-number-input/style.css';
-import PhoneInput from 'react-phone-number-input';
 import * as React from 'react';
 import { motion, useViewportScroll, useTransform } from 'framer-motion';
 import { useState } from 'react';
 import Transition from '../../Transition/Transition';
+import '../../Styles/form.css';
+import PhoneInput from 'react-phone-number-input';
 
 // eslint-disable-next-line react-refresh/only-export-components
 const AddContacts = () => {
@@ -62,14 +63,11 @@ const AddContacts = () => {
             scaleY: scrollYProgress,
           }}
         />
-        <div className="mt-32 mb-[-20]">
-          <div className="text-center">
-            <h1 className="text-3xl font-bold">Add Contacts</h1>
-          </div>
+        <div className=" mb-[-20]">
           <div className="hero min-h-screen">
             <div className="hero-content flex-col lg:flex-row-reverse">
               <div className="card shrink-0 w-full mx-auto shadow-2xl bg-base-100">
-                <form onSubmit={handleAddContact} className="card-body">
+                {/* <form onSubmit={handleAddContact} className="card-body">
                   <div className="flex flex-col md:flex-col lg:flex-row gap-5 mx-auto">
                     <div className="form-control">
                       <label className="label">
@@ -111,17 +109,6 @@ const AddContacts = () => {
                         name="number"
                         onChange={setValue}
                       />
-                      {/* <PhoneInput
-                    placeholder="Enter phone number"
-                    value={value}
-                    onChange={setValue}
-                    international
-                    defaultCountry="BD"
-                    type="number"
-                    className="input input-bordered"
-                    required
-                    name="number"
-                  /> */}
                     </div>
                     <div className="form-control">
                       <label className="label">
@@ -153,7 +140,68 @@ const AddContacts = () => {
                   <div className="form-control mt-6">
                     <button className="buttu">Submit</button>
                   </div>
-                </form>
+                </form> */}
+
+                <div className="login-box">
+                  <form onSubmit={handleAddContact} className="card-body">
+                    <div className="flex gap-2">
+                      <div className="user-box">
+                        <input
+                          required
+                          name="name"
+                          className="innpuu"
+                          id=""
+                          type="text"
+                        />
+                        <label>Name</label>
+                      </div>
+                      <div className="user-box">
+                        <input
+                          required
+                          name="email"
+                          type="email"
+                          className="innpuu"
+                        />
+                        <label>Email</label>
+                      </div>
+                    </div>
+                    <div className="flex gap-2">
+                      <div className="user-box">
+                        <input
+                          required
+                          name="number"
+                          type="text"
+                          className="innpuu"
+                        />
+                        <label>Phone Number</label>
+                      </div>
+                      <div className="user-box">
+                        <input
+                          required
+                          name="address"
+                          type="text"
+                          className="innpuu"
+                        />
+                        <label>Address</label>
+                      </div>
+                    </div>
+                    <div className="user-box">
+                      <input
+                        required
+                        name="picture"
+                        type="url"
+                        className="innpuu"
+                      />
+                      <label>User Photo</label>
+                    </div>
+                    <center>
+                      <button className="a" href="#">
+                        Submit
+                        <span></span>
+                      </button>
+                    </center>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
