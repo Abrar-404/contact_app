@@ -6,7 +6,6 @@ import { useState } from 'react';
 
 const MainLayout = () => {
   const [count, setCount] = useState(0);
-
   const background = {
     backgroundImage: `url(${backImg})`,
     backgroundSize: 'cover',
@@ -15,11 +14,11 @@ const MainLayout = () => {
     backgroundAttachment: 'fixed',
   };
   return (
-    <div style={background} className="">
+    <div style={background} className="wrapper">
       <div className="max-w-[425px] md:max-w-[768px] lg:max-w-[1400px] mx-auto">
-        <Navbar></Navbar>
-        <Outlet></Outlet>
-        <Spring key={count} />
+          <Navbar></Navbar>
+          <Spring key={count} />
+          <Outlet></Outlet>
       </div>
     </div>
   );
