@@ -61,7 +61,7 @@ const FavoriteCards = ({ item }) => {
   };
   return (
     <div className="border  p-2 rounded-xl shadow-lg  ">
-      <div className="overflow-hidden relative  bg-gray-50 rounded-2xl text-sky-600 flex flex-col justify-end items-center gap-2">
+      <div className="overflow-hidden relative  bg-transparent rounded-2xl text-white flex flex-col justify-end items-center gap-2">
         <svg
           className="absolute opacity-30 -rotate-12 -bottom-12 -right-12 w-40 h-40 stroke-current"
           height="100"

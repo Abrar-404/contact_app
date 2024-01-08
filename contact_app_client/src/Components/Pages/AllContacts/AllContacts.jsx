@@ -1,10 +1,11 @@
-import Transition from "../../Transition/Transition";
+import Transition from '../../Transition/Transition';
+import AllContactFuntion from './../AllContact/AllContactFuntion';
 
 // eslint-disable-next-line react-refresh/only-export-components
 const AllContacts = () => {
   return (
     <div>
-      <h1>All Contacts</h1>
+      <AllContactFuntion></AllContactFuntion>
     </div>
   );
 };

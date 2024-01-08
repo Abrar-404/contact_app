@@ -39,14 +39,12 @@ const ModalData = ({ isOpen, setIsOpen, contactId, setContacts }) => {
     const number = form.number.value;
     const address = form.address.value;
 
-
     const allData = {
       name,
       email,
       number,
       address,
     };
-
 
     try {
       const response = await axios.patch(
@@ -66,6 +64,8 @@ const ModalData = ({ isOpen, setIsOpen, contactId, setContacts }) => {
         }));
         Swal.fire({
           title: 'Success!',
+          color: 'white',
+          background: 'black',
           icon: 'success',
         });
         forceUpdate({});
@@ -82,9 +82,11 @@ const ModalData = ({ isOpen, setIsOpen, contactId, setContacts }) => {
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
       icon: 'warning',
+      background: 'black',
+      color: 'white',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
+      cancelButtonColor: 'red',
       confirmButtonText: 'Yes, delete it!',
     }).then(result => {
       if (result.isConfirmed) {
@@ -97,7 +99,13 @@ const ModalData = ({ isOpen, setIsOpen, contactId, setContacts }) => {
           .then(data => {
             console.log(data);
             if (data.deletedCount > 0) {
-              Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+              Swal.fire({
+                title: 'Deleted!',
+                color: 'white',
+                text: 'Your file has been deleted.',
+                icon: 'success',
+                background: 'black',
+              });
 
               // eslint-disable-next-line react/prop-types
               setContacts(prevContacts =>

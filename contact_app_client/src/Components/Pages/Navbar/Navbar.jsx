@@ -102,8 +102,8 @@ const Navbar = () => {
                 <div className="w-10 border-4 border-green-500 rounded-full">
                   <img
                     className=""
-                    src={user.photoURL}
-                    alt={user.displayName}
+                    src={user?.photoURL}
+                    alt={user?.displayName}
                   />
                 </div>
               </label>

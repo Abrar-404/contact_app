@@ -16,9 +16,7 @@ const Favorites = () => {
 
   return (
     <div className="max-w-[1400px] mx-auto">
-      <h1 className="heading my-4">Favorite Contacts</h1>
-
-      <ModalData isOpen={isOpen} setIsOpen={setIsOpen} contactId={contactId} />
+   <ModalData isOpen={isOpen} setIsOpen={setIsOpen} contactId={contactId} />
       <div className="grid md:grid-cols-3 gap-4">
         {favoriteContacts.map(item => (
           <FavoriteCards key={item?._id} item={item} />
