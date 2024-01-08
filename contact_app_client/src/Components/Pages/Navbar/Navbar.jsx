@@ -47,10 +47,10 @@ const Navbar = () => {
       {user && (
         <>
           <li className="text-white">
-            <NavLink to="/createtask">All Contacts</NavLink>
+            <NavLink to="/allContacts">All Contacts</NavLink>
           </li>
           <li className="text-white">
-            <NavLink to="/tasks">Add Contacts</NavLink>
+            <NavLink to="/addContacts">Add Contacts</NavLink>
           </li>
           <li className="text-white">
             <NavLink to="/favorites">Favorite Contacts</NavLink>
