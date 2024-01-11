@@ -13,7 +13,7 @@ const AllContactFuntion = () => {
   };
 
   useEffect(() => {
-    fetch('http://localhost:5000/addContact')
+    fetch('https://contactify-rho.vercel.app/addContact')
       .then(res => res.json())
       .then(data => setGetContacts(data));
   }, []);

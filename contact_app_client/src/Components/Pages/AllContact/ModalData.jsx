@@ -16,7 +16,7 @@ const ModalData = ({ isOpen, setIsOpen, contactId, setContacts }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/addContact/${contactId}`
+          `https://contactify-rho.vercel.app/addContact/${contactId}`
         );
         setSingleContact(response.data);
       } catch (error) {
@@ -48,7 +48,7 @@ const ModalData = ({ isOpen, setIsOpen, contactId, setContacts }) => {
 
     try {
       const response = await axios.patch(
-        `http://localhost:5000/addContact/${contactId}`,
+        `https://contactify-rho.vercel.app/addContact/${contactId}`,
         allData
       );
 
@@ -92,7 +92,7 @@ const ModalData = ({ isOpen, setIsOpen, contactId, setContacts }) => {
       if (result.isConfirmed) {
         console.log('Deleted Successfully');
 
-        fetch(`http://localhost:5000/addContact/${contactId}`, {
+        fetch(`https://contactify-rho.vercel.app/addContact/${contactId}`, {
           method: 'DELETE',
         })
           .then(res => res.json())

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const axiosSecure = axios.create({
-  baseURL: 'http://localhost:5000', // Update with your backend URL
+  baseURL: 'https://contactify-rho.vercel.app', // Update with your backend URL
 });
 
 const useAxiosSecure = () => {
