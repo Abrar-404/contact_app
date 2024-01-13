@@ -21,7 +21,7 @@ const Home = () => {
         <AllContactFuntion></AllContactFuntion>
       </div>
       <div className="mt-32">
-        {/* <Footer></Footer> */}
+        <Footer></Footer>
       </div>
     </div>
   );
