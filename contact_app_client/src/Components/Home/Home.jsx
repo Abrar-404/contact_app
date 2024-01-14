@@ -18,7 +18,7 @@ const Home = () => {
         <h1 className="text-white font-bold mt-32 flex justify-center text-3xl">
           All Contacts
         </h1>
-        <AllContactFuntion></AllContactFuntion>
+        {/* <AllContactFuntion></AllContactFuntion> */}
       </div>
       <div className="mt-32">
         <Footer></Footer>
